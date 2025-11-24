@@ -52,88 +52,107 @@ function TimelineItem({ data, index }: { data: typeof experiences[0], index: num
 
     const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
     const x = useTransform(scrollYProgress, [0, 0.5], [index % 2 === 0 ? -50 : 50, 0]);
-    const rotateX = useTransform(scrollYProgress, [0, 0.5], [15, 0]);
 
     return (
         <motion.div
             ref={ref}
-            style={{ opacity, x, rotateX, perspective: 1000 } as any}
-            className={`flex flex-col md:flex-row gap-6 md:gap-8 items-center mb-16 md:mb-24 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
+            style={{ opacity }}
+            className="relative"
         >
-            {/* Timeline Dot & Line */}
-            <div className="hidden md:flex flex-col items-center absolute left-1/2 -translate-x-1/2 h-full">
-                <div className="w-4 h-4 rounded-full bg-primary border-4 border-background z-10" />
-                <div className="w-0.5 h-full bg-border/50 -mt-2" />
-            </div>
+            {/* Timeline Line */}
+            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 to-transparent" />
 
-            {/* Content Card */}
-            <div className="flex-1 w-full md:w-1/2 max-w-md md:max-w-none mx-auto">
-                <div className="bg-card p-4 md:p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group border border-border hover:-translate-y-1">
-                    <div className="flex items-center gap-2 md:gap-3 mb-2 text-primary">
-                        <Briefcase className="w-4 h-4 md:w-5 md:h-5" />
-                        <h3 className="text-lg md:text-xl font-bold">{data.role}</h3>
-                    </div>
+            {/* Timeline Dot */}
+            <motion.div
+                style={{ opacity }}
+                className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"
+            />
 
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
-                        <span className="font-medium text-foreground">{data.company}</span>
-                        <span className="hidden sm:inline">•</span>
-                        <div className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            {data.period}
+            {/* Content */}
+            <motion.div
+                style={{ x }}
+                className={`ml-8 md:ml-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'
+                    }`}
+            >
+                <div className="bg-card border border-border/50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group hover:border-primary/30">
+                    {/* Header */}
+                    <div className="mb-4">
+                        <div className="flex items-start justify-between gap-4 mb-2">
+                            <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                                {data.role}
+                            </h3>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
+                            <Briefcase className="w-4 h-4" />
+                            <span className="font-medium">{data.company}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Calendar className="w-4 h-4" />
+                            <span>{data.period}</span>
                         </div>
                     </div>
 
-                    <ul className="space-y-1.5 md:space-y-2 mb-3 md:mb-4">
+                    {/* Description */}
+                    <ul className="space-y-2 mb-4">
                         {data.description.map((item, i) => (
-                            <li key={i} className="text-muted-foreground text-xs md:text-sm leading-relaxed flex items-start gap-2">
-                                <span className="mt-1.5 w-1 h-1 rounded-full bg-primary/50 shrink-0" />
+                            <li key={i} className="text-sm text-muted-foreground flex gap-2">
+                                <span className="text-primary mt-1.5 flex-shrink-0">•</span>
                                 <span>{item}</span>
                             </li>
                         ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-1.5 md:gap-2">
-                        {data.skills.map((skill) => (
+                    {/* Skills */}
+                    <div className="flex flex-wrap gap-2">
+                        {data.skills.map((skill, i) => (
                             <span
-                                key={skill}
-                                className="px-2 md:px-3 py-0.5 md:py-1 text-xs font-medium rounded-full bg-secondary text-secondary-foreground border border-border/50"
+                                key={i}
+                                className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20"
                             >
                                 {skill}
                             </span>
                         ))}
                     </div>
                 </div>
-            </div>
-
-            {/* Empty space for the other side of the timeline */}
-            <div className="flex-1 hidden md:block" />
+            </motion.div>
         </motion.div>
     );
 }
 
 export function Experience3D() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
     return (
-        <section id="experience" className="py-20 relative">
-            <div className="container px-4 md:px-6">
-                {/* Sticky Header */}
-                <div className="sticky top-16 z-10 pb-8 mb-12">
-                    <motion.div
+        <section id="experience" className="py-20 relative overflow-hidden bg-gradient-to-b from-background via-secondary/20 to-background">
+            {/* Background Effects */}
+            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+
+            <div ref={containerRef} className="container px-4 md:px-6 relative z-10">
+                {/* Header */}
+                <div className="text-center mb-16 md:mb-20">
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="text-center"
+                        className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                            Professional Journey
-                        </h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
-                            Building exceptional digital experiences through innovation and expertise
-                        </p>
-                    </motion.div>
+                        Professional <span className="text-primary">Journey</span>
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-muted-foreground max-w-2xl mx-auto"
+                    >
+                        A timeline of my professional growth and key contributions
+                    </motion.p>
                 </div>
 
-                <div className="relative max-w-5xl mx-auto px-2 md:px-0">
+                {/* Timeline */}
+                <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
                     {experiences.map((exp, index) => (
                         <TimelineItem key={exp.id} data={exp} index={index} />
                     ))}

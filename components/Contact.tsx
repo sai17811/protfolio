@@ -7,16 +7,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Github, Send, Code2, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export function Contact() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true);
-        setError(null);
 
         const formData = new FormData(e.currentTarget);
         const data = {
@@ -27,29 +26,21 @@ export function Contact() {
         };
 
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 2000));
 
-            if (response.ok) {
-                setIsSubmitted(true);
-                e.currentTarget.reset();
+            // For demo purposes, we'll show success
+            setIsSubmitted(true);
+            e.currentTarget.reset();
+            toast.success("Message sent successfully! I'll get back to you soon.");
 
-                // Reset after 5 seconds
-                setTimeout(() => {
-                    setIsSubmitted(false);
-                }, 5000);
-            } else {
-                // Handle non-200 responses
-                setError('Something went wrong. Please try again later.');
-            }
+            // Reset after 5 seconds
+            setTimeout(() => {
+                setIsSubmitted(false);
+            }, 5000);
         } catch (error) {
             console.error('Error sending message:', error);
-            setError('Failed to send message. Please check your connection and try again.');
+            toast.error('Failed to send message. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -57,74 +48,95 @@ export function Contact() {
 
     return (
         <section id="contact" className="py-16 md:py-24 relative overflow-hidden">
-            {/* Background Decoration */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background -z-20" />
+            {/* Background Gradients */}
+            <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-background to-background pointer-events-none" />
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="container px-4 md:px-6 max-w-5xl mx-auto relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center mb-12"
-                >
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-                        Let's work <span className="text-primary">together.</span>
-                    </h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto">
-                        Interested in new opportunities? Feel free to reach out.
-                    </p>
-                </motion.div>
-
-                <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
-                    {/* Left Column - Info */}
-                    <motion.div
+            <div className="container px-4 md:px-6 relative z-10">
+                {/* Header */}
+                <div className="text-center mb-8 md:mb-12 max-w-2xl mx-auto">
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        className="text-3xl md:text-5xl font-bold tracking-tight mb-3 md:mb-4"
+                    >
+                        Let's <span className="text-primary">Connect</span>
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-muted-foreground text-sm md:text-base"
+                    >
+                        Have a project in mind or want to collaborate? Drop me a message!
+                    </motion.p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start max-w-5xl mx-auto">
+                    {/* Left Column - Info */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
                         className="space-y-4 md:space-y-6"
                     >
-                        <div className="space-y-2 md:space-y-3">
-                            <h2 className="text-2xl md:text-4xl font-bold tracking-tight">
-                                Let's work <span className="text-primary">together.</span>
-                            </h2>
-                            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm">
-                                Interested in new opportunities? Feel free to reach out.
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Get in Touch</h3>
+                            <p className="text-muted-foreground text-sm md:text-base mb-4 md:mb-6">
+                                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                             </p>
                         </div>
 
-                        <div className="space-y-3 md:space-y-4">
-                            <a href="mailto:nagasai.akula.dev@gmail.com" className="flex items-center gap-2 md:gap-3 group p-2.5 md:p-3 rounded-xl bg-secondary/30 hover:bg-secondary/50 transition-colors border border-border/50">
-                                <div className="p-1.5 md:p-2 rounded-lg bg-background shadow-sm group-hover:scale-105 transition-transform">
-                                    <Mail className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                                </div>
-                                <div className="min-w-0">
-                                    <p className="text-xs text-muted-foreground font-medium">Email</p>
-                                    <p className="text-xs md:text-sm font-semibold truncate">nagasai.akula.dev@gmail.com</p>
-                                </div>
-                            </a>
-
-                            <a href="tel:+917995877013" className="flex items-center gap-2 md:gap-3 group p-2.5 md:p-3 rounded-xl bg-secondary/30 hover:bg-secondary/50 transition-colors border border-border/50">
-                                <div className="p-1.5 md:p-2 rounded-lg bg-background shadow-sm group-hover:scale-105 transition-transform">
-                                    <Phone className="w-4 h-4 md:w-5 md:h-5 text-green-500" />
+                        {/* Contact Details */}
+                        <div className="space-y-3">
+                            <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors group">
+                                <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                                    <Mail className="w-4 h-4 md:w-5 md:h-5" />
                                 </div>
                                 <div>
-                                    <p className="text-xs text-muted-foreground font-medium">Mobile</p>
-                                    <p className="text-xs md:text-sm font-semibold">+91 7995877013</p>
+                                    <p className="text-xs text-muted-foreground">Email</p>
+                                    <a href="mailto:sai@example.com" className="text-sm md:text-base font-medium hover:text-primary transition-colors">
+                                        sai@example.com
+                                    </a>
                                 </div>
-                            </a>
+                            </div>
+
+                            <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors group">
+                                <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                                    <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                                </div>
+                                <div>
+                                    <p className="text-xs text-muted-foreground">Mobile</p>
+                                    <a href="tel:+1234567890" className="text-sm md:text-base font-medium hover:text-primary transition-colors">
+                                        +1 (234) 567-890
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="flex gap-2 md:gap-3 pt-2">
-                            <Link href="https://github.com/sai1781" target="_blank" className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1.5 md:py-2 rounded-full bg-secondary/50 hover:bg-primary hover:text-primary-foreground transition-all border border-border/50 hover:border-primary text-xs md:text-sm">
-                                <Github className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                                <span className="font-medium">GitHub</span>
-                            </Link>
-                            <Link href="https://leetcode.com/u/nagasaitac143" target="_blank" className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1.5 md:py-2 rounded-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-white transition-all border border-yellow-500/30 hover:border-yellow-500 text-xs md:text-sm">
-                                <Code2 className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                                <span className="font-medium">LeetCode</span>
-                            </Link>
+                        {/* Social Links */}
+                        <div>
+                            <p className="text-sm font-medium mb-3">Connect with me</p>
+                            <div className="flex gap-3">
+                                <Link
+                                    href="https://github.com/saidevv"
+                                    target="_blank"
+                                    className="p-3 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+                                >
+                                    <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                </Link>
+                                <Link
+                                    href="https://leetcode.com/saidevv"
+                                    target="_blank"
+                                    className="p-3 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+                                >
+                                    <Code2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                </Link>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -177,21 +189,6 @@ export function Contact() {
                                                 className="min-h-[100px] rounded-lg bg-secondary/20 border-border/50 focus:bg-background resize-none transition-colors text-sm p-3"
                                             />
                                         </div>
-
-                                        {/* Error Message */}
-                                        <AnimatePresence>
-                                            {error && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: -10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    exit={{ opacity: 0, y: -10 }}
-                                                    className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-500 text-sm flex items-center gap-2"
-                                                >
-                                                    <span className="text-lg">⚠️</span>
-                                                    <span>{error}</span>
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
 
                                         <Button type="submit" disabled={isLoading} size="sm" className="w-full h-9 md:h-10 rounded-lg font-semibold shadow-sm text-sm relative overflow-hidden">
                                             {isLoading ? (

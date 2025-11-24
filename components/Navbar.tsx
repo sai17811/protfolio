@@ -5,17 +5,17 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { Button } from "@/components/ui/button";
-import { Menu, ArrowRight, Download, Mail } from "lucide-react";
+import { Menu, ArrowRight, Download, Mail, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { toast } from "sonner";
 
 const navItems = [
+    { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -29,6 +29,16 @@ export function Navbar() {
             setIsScrolled(false);
         }
     });
+
+    const handleDownloadResume = () => {
+        toast.success("Resume downloaded successfully!");
+        const link = document.createElement('a');
+        link.href = "/resume.pdf";
+        link.download = "Akula_Naga_Sai_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     return (
         <motion.header
@@ -64,18 +74,18 @@ export function Navbar() {
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
                         </Link>
                     ))}
-                    <ModeToggle />
-                    <Button size="sm" className="ml-2 font-semibold" onClick={() => {
-                        toast.success("Resume downloaded successfully!");
-                        const link = document.createElement('a');
-                        link.href = "/resume.pdf";
-                        link.download = "Akula_Naga_Sai_Resume.pdf";
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }}>
-                        Resume
-                    </Button>
+
+                    <div className="flex items-center gap-4 pl-4 border-l border-border/50">
+                        <ModeToggle />
+                        <Button size="sm" variant="ghost" onClick={handleDownloadResume}>
+                            Resume
+                        </Button>
+                        <Button size="sm" asChild>
+                            <Link href="#contact">
+                                Contact Me
+                            </Link>
+                        </Button>
+                    </div>
                 </nav>
 
                 {/* Mobile Nav */}
@@ -91,7 +101,7 @@ export function Navbar() {
                         <SheetContent side="right" className="w-[85vw] sm:w-[400px] border-l border-border/50 bg-background/98 backdrop-blur-2xl p-0">
                             <div className="flex flex-col h-full">
                                 {/* Header */}
-                                <div className="p-6 border-b border-border/50 bg-gradient-to-r from-primary/5 to-purple-500/5">
+                                <div className="p-6 border-b border-border/50 bg-gradient-to-r from-primary/5 to-purple-500/5 flex justify-between items-center">
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg shrink-0">
                                             S
@@ -103,10 +113,15 @@ export function Navbar() {
                                             <p className="text-xs text-muted-foreground font-medium">Frontend Developer</p>
                                         </div>
                                     </div>
+                                    <SheetClose asChild>
+                                        <Button variant="ghost" size="icon">
+                                            <X className="h-5 w-5" />
+                                        </Button>
+                                    </SheetClose>
                                 </div>
 
                                 {/* Navigation Links */}
-                                <nav className="flex flex-col gap-2 p-6 flex-1">
+                                <nav className="flex flex-col gap-2 p-6 flex-1 overflow-y-auto">
                                     {navItems.map((item, index) => (
                                         <SheetClose asChild key={item.name}>
                                             <Link
@@ -131,25 +146,17 @@ export function Navbar() {
                                 {/* Footer with CTA */}
                                 <div className="p-6 border-t border-border/50 bg-gradient-to-r from-primary/5 to-purple-500/5 space-y-3">
                                     <SheetClose asChild>
-                                        <Button className="w-full rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all" size="lg" onClick={() => {
-                                            toast.success("Resume downloaded successfully!");
-                                            const link = document.createElement('a');
-                                            link.href = "/resume.pdf";
-                                            link.download = "Akula_Naga_Sai_Resume.pdf";
-                                            document.body.appendChild(link);
-                                            link.click();
-                                            document.body.removeChild(link);
-                                        }}>
+                                        <Button className="w-full rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all" size="lg" onClick={handleDownloadResume}>
                                             <Download className="mr-2 w-5 h-5" />
                                             Download Resume
                                         </Button>
                                     </SheetClose>
                                     <SheetClose asChild>
-                                        <Button variant="outline" className="w-full rounded-xl font-semibold" size="lg" asChild>
-                                            <a href="#contact">
-                                                Get in Touch
+                                        <Button variant="default" className="w-full rounded-xl font-semibold" size="lg" asChild>
+                                            <Link href="#contact">
+                                                Contact Me
                                                 <Mail className="ml-2 w-5 h-5" />
-                                            </a>
+                                            </Link>
                                         </Button>
                                     </SheetClose>
                                 </div>
