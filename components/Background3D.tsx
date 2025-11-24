@@ -45,6 +45,7 @@ function Scene({ isDark }: { isDark: boolean }) {
             <pointLight position={[-10, -10, -5]} intensity={0.5} color={isDark ? "#4f46e5" : "#3b82f6"} />
 
             {/* Main Floating Shapes - More variety */}
+            {/* Main Floating Shapes - More variety */}
             <FloatingShape position={[-4, 2, -5]} geometry="icosahedron" color={isDark ? "#4338ca" : "#60a5fa"} speed={0.8} />
             <FloatingShape position={[4, -2, -4]} geometry="torus" color={isDark ? "#7c3aed" : "#a78bfa"} speed={1.2} />
             <FloatingShape position={[0, 1, -8]} geometry="sphere" color={isDark ? "#be185d" : "#f472b6"} distort={0.5} />
@@ -53,6 +54,12 @@ function Scene({ isDark }: { isDark: boolean }) {
             <FloatingShape position={[-5, 0, -9]} geometry="cone" color={isDark ? "#dc2626" : "#f87171"} speed={0.7} />
             <FloatingShape position={[5, 1, -6]} geometry="icosahedron" color={isDark ? "#0891b2" : "#67e8f9"} speed={1.3} />
             <FloatingShape position={[0, -2, -5]} geometry="torus" color={isDark ? "#8b5cf6" : "#c084fc"} speed={0.85} />
+
+            {/* Additional Objects for Richer Background */}
+            <FloatingShape position={[-6, 3, -10]} geometry="sphere" color={isDark ? "#1e40af" : "#93c5fd"} speed={0.6} />
+            <FloatingShape position={[6, -3, -8]} geometry="box" color={isDark ? "#4c1d95" : "#c4b5fd"} speed={1.0} />
+            <FloatingShape position={[-2, 4, -7]} geometry="octahedron" color={isDark ? "#be123c" : "#fda4af"} speed={0.9} />
+            <FloatingShape position={[2, -4, -9]} geometry="cone" color={isDark ? "#047857" : "#6ee7b7"} speed={1.1} />
 
             {/* Background Fill */}
             {/* <Environment preset={isDark ? "city" : "studio"} blur={0.8} /> */}

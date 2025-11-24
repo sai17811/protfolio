@@ -21,12 +21,17 @@ function Loader() {
 
 function ParticleCloud() {
     const ref = useRef<any>();
-    const [sphere] = useState(() => random.inSphere(new Float32Array(2000), { radius: 3 }));
+    // Fix: Ensure array size is divisible by 3 (stride). 2000 points * 3 coordinates = 6000
+    const [sphere] = useState(() => random.inSphere(new Float32Array(6000), { radius: 3 }));
 
     useFrame((state, delta) => {
         if (ref.current) {
+            // Group rotation
             ref.current.rotation.x -= delta / 10;
             ref.current.rotation.y -= delta / 15;
+
+            // Add subtle "breathing" or floating motion
+            ref.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
         }
     });
 
@@ -35,11 +40,11 @@ function ParticleCloud() {
             <Points ref={ref} positions={sphere as any} stride={3} frustumCulled={false}>
                 <PointMaterial
                     transparent
-                    color="#6590b8"
+                    color="#3b82f6" // Blue color as requested
                     size={0.06}
                     sizeAttenuation={true}
                     depthWrite={false}
-                    opacity={0.7}
+                    opacity={0.8}
                 />
             </Points>
         </group>

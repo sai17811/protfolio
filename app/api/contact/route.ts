@@ -14,6 +14,15 @@ export async function POST(request: Request) {
             );
         }
 
+        // Validate environment variables
+        if (!process.env.EMAIL_PASSWORD) {
+            console.error('Missing EMAIL_PASSWORD environment variable');
+            return NextResponse.json(
+                { error: 'Server configuration error. Please contact the administrator.' },
+                { status: 500 }
+            );
+        }
+
         // Create transporter using Gmail
         // You'll need to set up App Password in your Gmail account
         const transporter = nodemailer.createTransport({

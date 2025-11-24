@@ -41,12 +41,12 @@ export function Navbar() {
                     : "bg-transparent"
             )}
         >
-            <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+            <div className="container mx-auto px-4 md:px-6 h-20 md:h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 md:w-8 md:h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-2xl md:text-xl group-hover:scale-110 transition-transform">
                         S
                     </div>
-                    <span className="font-bold text-lg tracking-tight group-hover:text-primary transition-colors">
+                    <span className="font-bold text-xl md:text-lg tracking-tight group-hover:text-primary transition-colors">
                         sai<span className="text-primary">.dev</span>
                     </span>
                 </Link>
