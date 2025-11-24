@@ -33,7 +33,7 @@ export default function RootLayout({
         >
           {/* <Background3D /> */}
           {children}
-          <Toaster position="bottom-right" theme="dark" />
+          <Toaster position="top-center" theme="dark" />
         </ThemeProvider>
       </body>
     </html>

@@ -42,14 +42,15 @@ export function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={textVariants}
-                        className="flex flex-wrap items-center gap-3 mb-4"
+
+                        className="flex flex-wrap items-center gap-2 md:gap-3 mb-4 md:mb-6"
                     >
-                        <div className="inline-flex items-center rounded-full border px-2.5 md:px-3 py-1 text-xs md:text-sm font-medium bg-secondary/50 backdrop-blur-sm">
-                            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                        <div className="inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] md:text-sm font-medium bg-secondary/50 backdrop-blur-sm whitespace-nowrap">
+                            <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-green-500 mr-1.5 md:mr-2 animate-pulse"></span>
                             Available for work
                         </div>
-                        <div className="inline-flex items-center rounded-full border px-2.5 md:px-3 py-1 text-xs md:text-sm font-medium bg-purple-500/10 text-purple-500 border-purple-500/20 backdrop-blur-sm">
-                            <span className="flex h-2 w-2 rounded-full bg-purple-500 mr-2 animate-pulse"></span>
+                        <div className="inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] md:text-sm font-medium bg-green-500/10 text-green-500 border-green-500/20 backdrop-blur-sm whitespace-nowrap">
+                            <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-green-500 mr-1.5 md:mr-2 animate-pulse"></span>
                             Freelancing Work
                         </div>
                     </motion.div>
@@ -59,10 +60,10 @@ export function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={textVariants}
-                        className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight"
+                        className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight min-h-[80px] md:min-h-[auto]"
                     >
                         Hi,{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400 block md:inline">
                             <TypingAnimation
                                 phrases={[
                                     "I am Sai",

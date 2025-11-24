@@ -1,11 +1,10 @@
 "use client";
 
-import { useRef, Suspense, useState } from "react";
+import { useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, PresentationControls, Html, useProgress, Sphere, Sparkles } from "@react-three/drei";
+import { Float, PresentationControls, Html, useProgress, Sphere } from "@react-three/drei";
 import * as THREE from "three";
 import { Loader2 } from "lucide-react";
-import { random } from "maath";
 
 function Loader() {
     const { progress } = useProgress();
@@ -16,22 +15,6 @@ function Loader() {
                 <span className="text-sm font-medium">{progress.toFixed(0)}%</span>
             </div>
         </Html>
-    );
-}
-
-function ParticleCloud() {
-    return (
-        <group rotation={[0, 0, Math.PI / 4]}>
-            <Sparkles
-                count={200} // Increased from 100
-                scale={5}
-                size={6} // Increased from 4 (4 * 1.5 = 6)
-                speed={0.4}
-                opacity={0.8}
-                color="#3b82f6"
-                noise={0.5}
-            />
-        </group>
     );
 }
 
@@ -70,9 +53,6 @@ function CleanSphere() {
                     />
                 </Sphere>
             </Float>
-
-            {/* Particles */}
-            <ParticleCloud />
         </group>
     );
 }
