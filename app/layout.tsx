@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import dynamic from "next/dynamic";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         >
           {/* <Background3D /> */}
           {children}
+          <Toaster position="bottom-right" theme="dark" />
         </ThemeProvider>
       </body>
     </html>

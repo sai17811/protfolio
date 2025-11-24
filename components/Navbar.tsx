@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, ArrowRight, Download, Mail } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { toast } from "sonner";
 
 const navItems = [
     { name: "About", href: "#about" },
@@ -64,8 +65,16 @@ export function Navbar() {
                         </Link>
                     ))}
                     <ModeToggle />
-                    <Button size="sm" className="ml-2 font-semibold" asChild>
-                        <a href="/resume.pdf" download="Akula_Naga_Sai_Resume.pdf">Resume</a>
+                    <Button size="sm" className="ml-2 font-semibold" onClick={() => {
+                        toast.success("Resume downloaded successfully!");
+                        const link = document.createElement('a');
+                        link.href = "/resume.pdf";
+                        link.download = "Akula_Naga_Sai_Resume.pdf";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }}>
+                        Resume
                     </Button>
                 </nav>
 
@@ -122,11 +131,17 @@ export function Navbar() {
                                 {/* Footer with CTA */}
                                 <div className="p-6 border-t border-border/50 bg-gradient-to-r from-primary/5 to-purple-500/5 space-y-3">
                                     <SheetClose asChild>
-                                        <Button className="w-full rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all" size="lg" asChild>
-                                            <a href="/resume.pdf" download="Akula_Naga_Sai_Resume.pdf">
-                                                <Download className="mr-2 w-5 h-5" />
-                                                Download Resume
-                                            </a>
+                                        <Button className="w-full rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all" size="lg" onClick={() => {
+                                            toast.success("Resume downloaded successfully!");
+                                            const link = document.createElement('a');
+                                            link.href = "/resume.pdf";
+                                            link.download = "Akula_Naga_Sai_Resume.pdf";
+                                            document.body.appendChild(link);
+                                            link.click();
+                                            document.body.removeChild(link);
+                                        }}>
+                                            <Download className="mr-2 w-5 h-5" />
+                                            Download Resume
                                         </Button>
                                     </SheetClose>
                                     <SheetClose asChild>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Github, Mail, Code2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { TypingAnimation } from "@/components/ui/typing-animation";
+import { toast } from "sonner";
 
 const ModelShowcase = dynamic(() => import("@/components/ModelShowcase").then((mod) => mod.ModelShowcase), {
     ssr: false,
@@ -41,10 +42,16 @@ export function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={textVariants}
-                        className="inline-flex items-center rounded-full border px-2.5 md:px-3 py-1 text-xs md:text-sm font-medium bg-secondary/50 backdrop-blur-sm"
+                        className="flex flex-wrap items-center gap-3 mb-4"
                     >
-                        <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-                        Available for work
+                        <div className="inline-flex items-center rounded-full border px-2.5 md:px-3 py-1 text-xs md:text-sm font-medium bg-secondary/50 backdrop-blur-sm">
+                            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                            Available for work
+                        </div>
+                        <div className="inline-flex items-center rounded-full border px-2.5 md:px-3 py-1 text-xs md:text-sm font-medium bg-purple-500/10 text-purple-500 border-purple-500/20 backdrop-blur-sm">
+                            <span className="flex h-2 w-2 rounded-full bg-purple-500 mr-2 animate-pulse"></span>
+                            Freelancing Work
+                        </div>
                     </motion.div>
 
                     <motion.h1
@@ -93,11 +100,17 @@ export function Hero() {
                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </a>
                         </Button>
-                        <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto" asChild>
-                            <a href="/resume.pdf" download="Akula_Naga_Sai_Resume.pdf">
-                                <Download className="mr-2 h-4 w-4" />
-                                Resume
-                            </a>
+                        <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto" onClick={() => {
+                            toast.success("Resume downloaded successfully!");
+                            const link = document.createElement('a');
+                            link.href = "/resume.pdf";
+                            link.download = "Akula_Naga_Sai_Resume.pdf";
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        }}>
+                            <Download className="mr-2 h-4 w-4" />
+                            Resume
                         </Button>
                     </motion.div>
 

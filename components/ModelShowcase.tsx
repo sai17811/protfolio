@@ -23,13 +23,13 @@ function ParticleCloud() {
     return (
         <group rotation={[0, 0, Math.PI / 4]}>
             <Sparkles
-                count={100} // Reduced count as requested (was 2000/6000)
+                count={200} // Increased from 100
                 scale={5}
-                size={4}
+                size={6} // Increased from 4 (4 * 1.5 = 6)
                 speed={0.4}
                 opacity={0.8}
-                color="#3b82f6" // Blue
-                noise={0.5} // Adds internal movement/wobble
+                color="#3b82f6"
+                noise={0.5}
             />
         </group>
     );
