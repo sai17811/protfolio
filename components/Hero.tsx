@@ -43,7 +43,7 @@ export function Hero() {
                         animate="visible"
                         variants={textVariants}
 
-                        className="flex flex-wrap items-center gap-2 md:gap-3 mb-4 md:mb-6"
+                        className="flex flex-wrap items-center gap-2 md:gap-3 mb-6 md:mb-8"
                     >
                         <div className="inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] md:text-sm font-medium bg-secondary/50 backdrop-blur-sm whitespace-nowrap">
                             <span className="flex h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-green-500 mr-1.5 md:mr-2 animate-pulse"></span>
@@ -60,7 +60,7 @@ export function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={textVariants}
-                        className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight min-h-[80px] md:min-h-[auto]"
+                        className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight min-h-[120px] md:min-h-[auto]"
                     >
                         Hi,{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400 block md:inline">

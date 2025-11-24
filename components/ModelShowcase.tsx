@@ -68,9 +68,9 @@ function ParticleCloud() {
                 scale={5}
                 size={6}
                 speed={0.4}
-                opacity={0.8}
+                opacity={1}
                 color="#3b82f6"
-                noise={0.5}
+                noise={0.05} // Reduced to 5% as requested
             />
         </group>
     );
