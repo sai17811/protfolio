@@ -123,7 +123,7 @@ export function Contact() {
                             <p className="text-sm font-medium mb-3">Connect with me</p>
                             <div className="flex gap-3">
                                 <Link
-                                    href="https://github.com/sai17811"
+                                    href="https://github.com/sai1781"
                                     target="_blank"
                                     className="p-3 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
                                 >

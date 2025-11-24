@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://sai-portfolio.com",
+    url: "https://saidevv.com",
     title: "Saidevv | Full-Stack Developer",
     description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript.",
     siteName: "Saidevv Portfolio",
@@ -68,7 +68,7 @@ export default function RootLayout({
     "url": "https://saidevv.com",
     "jobTitle": "Full-Stack Developer",
     "sameAs": [
-      "https://github.com/sai17811"
+      "https://github.com/sai1781"
     ]
   };
 

@@ -2,10 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Github, Mail, Code2 } from "lucide-react";
+import { ArrowRight, Github, Mail, Code2 } from "lucide-react";
 import dynamic from "next/dynamic";
-import { TypingAnimation } from "@/components/ui/typing-animation";
-import { toast } from "sonner";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
@@ -41,37 +39,34 @@ export function Hero() {
     const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
     const [displayedText, setDisplayedText] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
-    const [typingSpeed, setTypingSpeed] = useState(150);
 
     useEffect(() => {
         const currentTitle = jobTitles[currentTitleIndex];
+        let timer: NodeJS.Timeout;
 
-        const handleTyping = () => {
-            if (!isDeleting) {
-                // Typing forward
-                if (displayedText.length < currentTitle.length) {
-                    setDisplayedText(currentTitle.substring(0, displayedText.length + 1));
-                    setTypingSpeed(150);
-                } else {
-                    // Pause at end before deleting
-                    setTimeout(() => setIsDeleting(true), 2000);
-                }
-            } else {
-                // Deleting
-                if (displayedText.length > 0) {
+        if (isDeleting) {
+            if (displayedText.length > 0) {
+                timer = setTimeout(() => {
                     setDisplayedText(currentTitle.substring(0, displayedText.length - 1));
-                    setTypingSpeed(100);
-                } else {
-                    // Move to next title
-                    setIsDeleting(false);
-                    setCurrentTitleIndex((prev) => (prev + 1) % jobTitles.length);
-                }
+                }, 50);
+            } else {
+                setIsDeleting(false);
+                setCurrentTitleIndex((prev) => (prev + 1) % jobTitles.length);
             }
-        };
+        } else {
+            if (displayedText.length < currentTitle.length) {
+                timer = setTimeout(() => {
+                    setDisplayedText(currentTitle.substring(0, displayedText.length + 1));
+                }, 100 + Math.random() * 50);
+            } else {
+                timer = setTimeout(() => {
+                    setIsDeleting(true);
+                }, 2000);
+            }
+        }
 
-        const timer = setTimeout(handleTyping, typingSpeed);
         return () => clearTimeout(timer);
-    }, [displayedText, isDeleting, currentTitleIndex, typingSpeed]);
+    }, [displayedText, isDeleting, currentTitleIndex]);
 
     return (
         <section className="min-h-screen flex items-center justify-center pt-20 md:pt-16 pb-8 md:pb-10 px-4 overflow-hidden relative">
@@ -150,7 +145,7 @@ export function Hero() {
                         className="flex items-center justify-center lg:justify-start gap-4 pt-4"
                     >
                         <a
-                            href="https://github.com/sai17811"
+                            href="https://github.com/sai1781"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground hover:text-foreground transition-colors p-2"
