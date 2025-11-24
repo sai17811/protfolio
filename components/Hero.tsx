@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Github, Mail, Code2, Linkedin } from "lucide-react";
+import { ArrowRight, Download, Github, Mail, Code2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { TypingAnimation } from "@/components/ui/typing-animation";
 import { toast } from "sonner";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const ModelShowcase = dynamic(() => import("@/components/ModelShowcase").then((mod) => mod.ModelShowcase), {
     ssr: false,
@@ -30,7 +31,48 @@ const textVariants = {
     }),
 };
 
+const jobTitles = [
+    "UI/UX Engineer",
+    "React Specialist",
+    "Frontend Developer"
+];
+
 export function Hero() {
+    const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+    const [displayedText, setDisplayedText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [typingSpeed, setTypingSpeed] = useState(150);
+
+    useEffect(() => {
+        const currentTitle = jobTitles[currentTitleIndex];
+
+        const handleTyping = () => {
+            if (!isDeleting) {
+                // Typing forward
+                if (displayedText.length < currentTitle.length) {
+                    setDisplayedText(currentTitle.substring(0, displayedText.length + 1));
+                    setTypingSpeed(150);
+                } else {
+                    // Pause at end before deleting
+                    setTimeout(() => setIsDeleting(true), 2000);
+                }
+            } else {
+                // Deleting
+                if (displayedText.length > 0) {
+                    setDisplayedText(currentTitle.substring(0, displayedText.length - 1));
+                    setTypingSpeed(100);
+                } else {
+                    // Move to next title
+                    setIsDeleting(false);
+                    setCurrentTitleIndex((prev) => (prev + 1) % jobTitles.length);
+                }
+            }
+        };
+
+        const timer = setTimeout(handleTyping, typingSpeed);
+        return () => clearTimeout(timer);
+    }, [displayedText, isDeleting, currentTitleIndex, typingSpeed]);
+
     return (
         <section className="min-h-screen flex items-center justify-center pt-20 md:pt-16 pb-8 md:pb-10 px-4 overflow-hidden relative">
             <Background3D />
@@ -60,11 +102,12 @@ export function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={textVariants}
-                        className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1] min-h-[120px] md:min-h-[auto]"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight"
                     >
-                        Hi, I’m Saidevv <br className="hidden lg:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400">
-                            Full-Stack Developer.
+                        <span className="block mb-2">Hi, I'm Sai</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400 inline-flex items-center min-h-[1.2em]">
+                            {displayedText}
+                            <span className="inline-block w-0.5 h-[0.8em] bg-primary ml-1 animate-pulse"></span>
                         </span>
                     </motion.h1>
 
@@ -107,7 +150,7 @@ export function Hero() {
                         className="flex items-center justify-center lg:justify-start gap-4 pt-4"
                     >
                         <a
-                            href="https://www.github.com/sai1781"
+                            href="https://github.com/saidevv"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground hover:text-foreground transition-colors p-2"
@@ -116,16 +159,7 @@ export function Hero() {
                             <Github className="h-6 w-6" />
                         </a>
                         <a
-                            href="https://www.linkedin.com/in/sai-akula-b0a91616b/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-muted-foreground hover:text-foreground transition-colors p-2"
-                            aria-label="LinkedIn"
-                        >
-                            <Linkedin className="h-6 w-6" />
-                        </a>
-                        <a
-                            href="https://leetcode.com/u/nagasaitac143"
+                            href="https://leetcode.com/u/saidevv"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground hover:text-foreground transition-colors p-2"
