@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, Github, Send, Code2, CheckCircle2 } from "lucide-react";
+import { SocialLink } from "@/components/SocialLink";
 import Link from "next/link";
 import { toast } from "sonner";
 
@@ -122,20 +123,16 @@ export function Contact() {
                         <div>
                             <p className="text-sm font-medium mb-3">Connect with me</p>
                             <div className="flex gap-3">
-                                <Link
+                                <SocialLink
                                     href="https://github.com/sai1781"
-                                    target="_blank"
-                                    className="p-3 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
-                                >
-                                    <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                </Link>
-                                <Link
+                                    icon={<Github className="w-5 h-5" />}
+                                    label="GitHub"
+                                />
+                                <SocialLink
                                     href="https://leetcode.com/u/nagasaitac143"
-                                    target="_blank"
-                                    className="p-3 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
-                                >
-                                    <Code2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                </Link>
+                                    icon={<Code2 className="w-5 h-5" />}
+                                    label="LeetCode"
+                                />
                             </div>
                         </div>
                     </motion.div>

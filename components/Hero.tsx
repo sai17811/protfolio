@@ -6,6 +6,7 @@ import { ArrowRight, Github, Mail, Code2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { SocialLink } from "@/components/SocialLink";
 
 const ModelShowcase = dynamic(() => import("@/components/ModelShowcase").then((mod) => mod.ModelShowcase), {
     ssr: false,
@@ -144,24 +145,16 @@ export function Hero() {
                         variants={textVariants}
                         className="flex items-center justify-center lg:justify-start gap-4 pt-4"
                     >
-                        <a
+                        <SocialLink
                             href="https://github.com/sai1781"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-muted-foreground hover:text-foreground transition-colors p-2"
-                            aria-label="GitHub"
-                        >
-                            <Github className="h-6 w-6" />
-                        </a>
-                        <a
+                            icon={<Github className="h-6 w-6" />}
+                            label="GitHub"
+                        />
+                        <SocialLink
                             href="https://leetcode.com/u/nagasaitac143"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-muted-foreground hover:text-foreground transition-colors p-2"
-                            aria-label="LeetCode"
-                        >
-                            <Code2 className="h-6 w-6" />
-                        </a>
+                            icon={<Code2 className="h-6 w-6" />}
+                            label="LeetCode"
+                        />
                         <a
                             href="mailto:nagasai.akula.dev@gmail.com"
                             className="text-muted-foreground hover:text-foreground transition-colors p-2"

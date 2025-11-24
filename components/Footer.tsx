@@ -1,6 +1,7 @@
 "use client";
 
 import { Github, Mail, Code2 } from "lucide-react";
+import { SocialLink } from "@/components/SocialLink";
 import Link from "next/link";
 
 export function Footer() {
@@ -29,12 +30,8 @@ export function Footer() {
                     </nav>
 
                     <div className="flex items-center gap-4">
-                        <Link href="https://github.com/sai1781" target="_blank" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="GitHub">
-                            <Github className="w-4 h-4" />
-                        </Link>
-                        <Link href="https://leetcode.com/u/nagasaitac143" target="_blank" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="LeetCode">
-                            <Code2 className="w-4 h-4" />
-                        </Link>
+                        <SocialLink href="https://github.com/sai1781" icon={<Github className="w-4 h-4" />} label="GitHub" className="p-2" />
+                        <SocialLink href="https://leetcode.com/u/nagasaitac143" icon={<Code2 className="w-4 h-4" />} label="LeetCode" className="p-2" />
                         <Link href="mailto:nagasai.akula.dev@gmail.com" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="Email">
                             <Mail className="w-4 h-4" />
                         </Link>
