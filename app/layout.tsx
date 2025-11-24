@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Sai",
+    default: "Sai | Frontend Developer",
     template: "%s | Sai"
   },
   description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript. Building scalable, high-performance web applications with pixel-perfect design.",
