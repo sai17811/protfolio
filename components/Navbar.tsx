@@ -98,7 +98,7 @@ export function Navbar() {
                                 <span className="sr-only">Open menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="w-[85vw] sm:w-[400px] border-l border-border/50 bg-background/98 backdrop-blur-2xl p-0">
+                        <SheetContent side="right" className="w-[85vw] sm:w-[400px] border-l border-border/50 bg-background/80 backdrop-blur-xl p-0 [&>button]:hidden">
                             <div className="flex flex-col h-full">
                                 {/* Header */}
                                 <div className="p-6 border-b border-border/50 bg-gradient-to-r from-primary/5 to-purple-500/5 flex justify-between items-center">
@@ -126,9 +126,10 @@ export function Navbar() {
                                         <SheetClose asChild key={item.name}>
                                             <Link
                                                 href={item.href}
-                                                className="group flex items-center justify-between p-4 rounded-xl bg-secondary/30 hover:bg-primary hover:text-primary-foreground transition-all duration-300 border border-border/50 hover:border-primary hover:shadow-lg hover:scale-[1.02]"
+                                                className="group flex items-center justify-between p-4 rounded-xl bg-secondary/30 hover:bg-primary hover:text-primary-foreground transition-all duration-300 border border-border/50 hover:border-primary hover:shadow-lg hover:scale-[1.02] animate-in slide-in-from-right-8 fade-in fill-mode-forwards"
                                                 style={{
-                                                    animationDelay: `${index * 50}ms`
+                                                    animationDelay: `${index * 100}ms`,
+                                                    animationDuration: '500ms'
                                                 }}
                                             >
                                                 <div className="flex items-center gap-3">
