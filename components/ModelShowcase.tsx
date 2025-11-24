@@ -2,7 +2,7 @@
 
 import { useRef, Suspense, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, PresentationControls, Html, useProgress, Sphere, Points, PointMaterial } from "@react-three/drei";
+import { Float, PresentationControls, Html, useProgress, Sphere, Sparkles } from "@react-three/drei";
 import * as THREE from "three";
 import { Loader2 } from "lucide-react";
 import { random } from "maath";
@@ -20,33 +20,17 @@ function Loader() {
 }
 
 function ParticleCloud() {
-    const ref = useRef<any>();
-    // Fix: Ensure array size is divisible by 3 (stride). 2000 points * 3 coordinates = 6000
-    const [sphere] = useState(() => random.inSphere(new Float32Array(6000), { radius: 3 }));
-
-    useFrame((state, delta) => {
-        if (ref.current) {
-            // Group rotation
-            ref.current.rotation.x -= delta / 10;
-            ref.current.rotation.y -= delta / 15;
-
-            // Add subtle "breathing" or floating motion
-            ref.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
-        }
-    });
-
     return (
         <group rotation={[0, 0, Math.PI / 4]}>
-            <Points ref={ref} positions={sphere as any} stride={3} frustumCulled={false}>
-                <PointMaterial
-                    transparent
-                    color="#3b82f6" // Blue color as requested
-                    size={0.06}
-                    sizeAttenuation={true}
-                    depthWrite={false}
-                    opacity={0.8}
-                />
-            </Points>
+            <Sparkles
+                count={100} // Reduced count as requested (was 2000/6000)
+                scale={5}
+                size={4}
+                speed={0.4}
+                opacity={0.8}
+                color="#3b82f6" // Blue
+                noise={0.5} // Adds internal movement/wobble
+            />
         </group>
     );
 }

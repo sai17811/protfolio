@@ -84,14 +84,14 @@ export function Navbar() {
                                 {/* Header */}
                                 <div className="p-6 border-b border-border/50 bg-gradient-to-r from-primary/5 to-purple-500/5">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg">
+                                        <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg shrink-0">
                                             S
                                         </div>
-                                        <div>
-                                            <h2 className="font-bold text-lg tracking-tight">
+                                        <div className="flex flex-col justify-center">
+                                            <h2 className="font-bold text-lg tracking-tight leading-none mb-1">
                                                 sai<span className="text-primary">.dev</span>
                                             </h2>
-                                            <p className="text-xs text-muted-foreground">Frontend Developer</p>
+                                            <p className="text-xs text-muted-foreground font-medium">Frontend Developer</p>
                                         </div>
                                     </div>
                                 </div>
