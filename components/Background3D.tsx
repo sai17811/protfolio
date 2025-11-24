@@ -6,13 +6,21 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
-function FloatingShape({ position, geometry, color, speed = 1, distort = 0.3 }: { position: [number, number, number], geometry: "sphere" | "box" | "torus" | "icosahedron", color: string, speed?: number, distort?: number }) {
+function FloatingShape({ position, geometry, color, speed = 1, distort = 0.3 }: { position: [number, number, number], geometry: "sphere" | "box" | "torus" | "icosahedron" | "octahedron" | "cone", color: string, speed?: number, distort?: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
+    const initialPosition = useRef(position);
 
     useFrame((state) => {
         if (meshRef.current) {
+            // Rotation
             meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.1 * speed;
             meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.15 * speed;
+
+            // Floating animation (up and down movement)
+            meshRef.current.position.y = initialPosition.current[1] + Math.sin(state.clock.getElapsedTime() * speed * 0.5) * 0.5;
+
+            // Horizontal drift
+            meshRef.current.position.x = initialPosition.current[0] + Math.cos(state.clock.getElapsedTime() * speed * 0.3) * 0.3;
         }
     });
 
@@ -22,6 +30,8 @@ function FloatingShape({ position, geometry, color, speed = 1, distort = 0.3 }: 
             {geometry === "box" && <boxGeometry args={[1.5, 1.5, 1.5]} />}
             {geometry === "torus" && <torusGeometry args={[0.8, 0.3, 16, 100]} />}
             {geometry === "icosahedron" && <icosahedronGeometry args={[1, 0]} />}
+            {geometry === "octahedron" && <octahedronGeometry args={[1, 0]} />}
+            {geometry === "cone" && <coneGeometry args={[1, 2, 32]} />}
             <meshStandardMaterial color={color} roughness={0.2} metalness={0.1} />
         </mesh>
     );
@@ -34,12 +44,15 @@ function Scene({ isDark }: { isDark: boolean }) {
             <directionalLight position={[10, 10, 5]} intensity={isDark ? 0.5 : 1} />
             <pointLight position={[-10, -10, -5]} intensity={0.5} color={isDark ? "#4f46e5" : "#3b82f6"} />
 
-            {/* Main Floating Shapes */}
+            {/* Main Floating Shapes - More variety */}
             <FloatingShape position={[-4, 2, -5]} geometry="icosahedron" color={isDark ? "#4338ca" : "#60a5fa"} speed={0.8} />
             <FloatingShape position={[4, -2, -4]} geometry="torus" color={isDark ? "#7c3aed" : "#a78bfa"} speed={1.2} />
             <FloatingShape position={[0, 1, -8]} geometry="sphere" color={isDark ? "#be185d" : "#f472b6"} distort={0.5} />
             <FloatingShape position={[-3, -3, -6]} geometry="box" color={isDark ? "#059669" : "#34d399"} speed={0.9} />
-            <FloatingShape position={[3, 3, -7]} geometry="icosahedron" color={isDark ? "#d97706" : "#fbbf24"} speed={1.1} />
+            <FloatingShape position={[3, 3, -7]} geometry="octahedron" color={isDark ? "#d97706" : "#fbbf24"} speed={1.1} />
+            <FloatingShape position={[-5, 0, -9]} geometry="cone" color={isDark ? "#dc2626" : "#f87171"} speed={0.7} />
+            <FloatingShape position={[5, 1, -6]} geometry="icosahedron" color={isDark ? "#0891b2" : "#67e8f9"} speed={1.3} />
+            <FloatingShape position={[0, -2, -5]} geometry="torus" color={isDark ? "#8b5cf6" : "#c084fc"} speed={0.85} />
 
             {/* Background Fill */}
             {/* <Environment preset={isDark ? "city" : "studio"} blur={0.8} /> */}
