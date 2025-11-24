@@ -16,21 +16,36 @@
     --popover-foreground: 240 10% 3.9%;
 
     --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 93%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 93%;
+    --muted-foreground: 240 3.8% 45%;
+
+    --accent: 240 4.8% 93%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
 
     --border: 240 5.9% 85%;
-    /* Darker border for better definition */
     --input: 240 5.9% 85%;
     --ring: 240 5.9% 10%;
 
     --radius: 0.75rem;
+
+    /* User Requested Light Mode Colors */
+    --text-color-light: #333333;
+    --heading-color-light: #111111;
+    --link-color-light: #1a0dab;
   }
 
   .dark {
     /* Dark Mode - Deep & Premium */
     --background: 240 10% 3.9%;
-    /* #09090B */
     --foreground: 0 0% 98%;
-    /* #FAFAFA */
 
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -42,7 +57,6 @@
     --primary-foreground: 240 5.9% 10%;
 
     --secondary: 240 3.7% 15.9%;
-    /* #27272A */
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 3.7% 15.9%;
@@ -68,28 +82,41 @@
   html {
     @apply scroll-smooth overflow-x-hidden;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE and Edge */
   }
 
   html::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari, Opera */
   }
 
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary overflow-x-hidden;
     font-feature-settings: "rlig" 1, "calt" 1;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE and Edge */
   }
 
   body::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari, Opera */
+  }
+
+  /* Light Mode Specific Overrides */
+  :root:not(.dark) body {
+    color: var(--text-color-light);
+    background-color: #ffffff;
+  }
+
+  :root:not(.dark) h1,
+  :root:not(.dark) h2,
+  :root:not(.dark) h3,
+  :root:not(.dark) h4,
+  :root:not(.dark) h5,
+  :root:not(.dark) h6 {
+    color: var(--heading-color-light);
+  }
+
+  :root:not(.dark) a {
+    color: var(--link-color-light);
   }
 }
 
