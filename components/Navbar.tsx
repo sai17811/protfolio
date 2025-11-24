@@ -58,7 +58,7 @@ export function Navbar() {
                         S
                     </div>
                     <span className="font-bold text-xl md:text-lg tracking-tight group-hover:text-primary transition-colors">
-                        sai<span className="text-primary">.dev</span>
+                        Sai
                     </span>
                 </Link>
 
@@ -108,7 +108,7 @@ export function Navbar() {
                                         </div>
                                         <div className="flex flex-col justify-center">
                                             <h2 className="font-bold text-lg tracking-tight leading-none mb-1">
-                                                sai<span className="text-primary">.dev</span>
+                                                Sai
                                             </h2>
                                             <p className="text-xs text-muted-foreground font-medium">Frontend Developer</p>
                                         </div>

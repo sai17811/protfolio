@@ -15,7 +15,7 @@ export function Footer() {
                                 S
                             </div>
                             <span className="font-bold text-lg tracking-tight">
-                                sai<span className="text-primary">.dev</span>
+                                Sai
                             </span>
                         </Link>
                         <p className="text-sm text-muted-foreground">
@@ -39,7 +39,7 @@ export function Footer() {
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-border/50 text-center text-xs text-muted-foreground">
-                    <p>© {new Date().getFullYear()} Saidevv. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} Sai. All rights reserved.</p>
                 </div>
             </div>
         </footer>

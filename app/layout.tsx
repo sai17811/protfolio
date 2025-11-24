@@ -9,32 +9,32 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Saidevv | Full-Stack Developer",
-    template: "%s | Saidevv"
+    default: "Sai",
+    template: "%s | Sai"
   },
   description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript. Building scalable, high-performance web applications with pixel-perfect design.",
   keywords: ["Frontend Developer", "Full Stack Developer", "React Developer", "Next.js", "TypeScript", "Web Development", "Portfolio"],
-  authors: [{ name: "Saidevv" }],
-  creator: "Saidevv",
+  authors: [{ name: "Sai" }],
+  creator: "Sai",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://saidevv.com",
-    title: "Saidevv | Full-Stack Developer",
+    title: "Sai | Full-Stack Developer",
     description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript.",
-    siteName: "Saidevv Portfolio",
+    siteName: "Sai Portfolio",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Saidevv Portfolio",
+        alt: "Sai Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Saidevv | Full-Stack Developer",
+    title: "Sai | Full-Stack Developer",
     description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript.",
     images: ["/og-image.png"],
     creator: "@saidevv",
@@ -64,7 +64,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Saidevv",
+    "name": "Sai",
     "url": "https://saidevv.com",
     "jobTitle": "Full-Stack Developer",
     "sameAs": [
