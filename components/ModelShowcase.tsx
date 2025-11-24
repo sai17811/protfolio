@@ -2,7 +2,7 @@
 
 import { useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, PresentationControls, Html, useProgress, Sphere } from "@react-three/drei";
+import { Float, PresentationControls, Html, useProgress, Sphere, Sparkles } from "@react-three/drei";
 import * as THREE from "three";
 import { Loader2 } from "lucide-react";
 
@@ -53,6 +53,25 @@ function CleanSphere() {
                     />
                 </Sphere>
             </Float>
+
+            {/* Particles */}
+            <ParticleCloud />
+        </group>
+    );
+}
+
+function ParticleCloud() {
+    return (
+        <group rotation={[0, 0, Math.PI / 4]}>
+            <Sparkles
+                count={200}
+                scale={5}
+                size={6}
+                speed={0.4}
+                opacity={0.8}
+                color="#3b82f6"
+                noise={0.5}
+            />
         </group>
     );
 }

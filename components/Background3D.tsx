@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense, useRef } from "react";
 import { useTheme } from "next-themes";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { ContactShadows, Environment, Sparkles } from "@react-three/drei";
+import { ContactShadows, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
 function FloatingShape({ position, geometry, color, speed = 1, distort = 0.3 }: { position: [number, number, number], geometry: "sphere" | "box" | "torus" | "icosahedron" | "octahedron" | "cone", color: string, speed?: number, distort?: number }) {
@@ -73,16 +73,7 @@ function Scene({ isDark }: { isDark: boolean }) {
                 color={isDark ? "#000000" : "#a1a1aa"}
             />
 
-            {/* Global Particles - Full Screen, Sharp, Moving */}
-            <Sparkles
-                count={200}
-                scale={12} // Increased scale to cover full screen
-                size={6}
-                speed={0.4}
-                opacity={0.8}
-                color={isDark ? "#3b82f6" : "#2563eb"}
-                noise={0.2} // Reduced noise for smoother movement
-            />
+
         </>
     );
 }
