@@ -54,8 +54,7 @@ function CleanSphere() {
                 </Sphere>
             </Float>
 
-            {/* Particles */}
-            <ParticleCloud />
+            {/* Particles removed from here to stop rotation */}
         </group>
     );
 }
@@ -70,7 +69,7 @@ function ParticleCloud() {
                 speed={0.4}
                 opacity={1}
                 color="#3b82f6"
-                noise={0.05} // Reduced to 5% as requested
+                noise={0} // Removed noise completely for clarity
             />
         </group>
     );
@@ -91,6 +90,7 @@ export function ModelShowcase() {
                         <pointLight position={[10, 10, 10]} intensity={1} />
                         <pointLight position={[-10, -10, -10]} intensity={0.5} />
                         <CleanSphere />
+                        <ParticleCloud />
                     </PresentationControls>
                 </Suspense>
             </Canvas>

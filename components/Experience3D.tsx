@@ -116,7 +116,7 @@ export function Experience3D() {
         <section id="experience" className="py-20 relative">
             <div className="container px-4 md:px-6">
                 {/* Sticky Header */}
-                <div className="sticky top-16 z-10 bg-background/95 backdrop-blur-sm pb-8 mb-12">
+                <div className="sticky top-16 z-10 pb-8 mb-12">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
