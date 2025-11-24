@@ -35,11 +35,6 @@
     --ring: 240 5.9% 10%;
 
     --radius: 0.75rem;
-
-    /* User Requested Light Mode Colors */
-    --text-color-light: #333333;
-    --heading-color-light: #111111;
-    --link-color-light: #1a0dab;
   }
 
   .dark {
@@ -98,25 +93,6 @@
 
   body::-webkit-scrollbar {
     display: none;
-  }
-
-  /* Light Mode Specific Overrides */
-  :root:not(.dark) body {
-    color: var(--text-color-light);
-    background-color: #ffffff;
-  }
-
-  :root:not(.dark) h1,
-  :root:not(.dark) h2,
-  :root:not(.dark) h3,
-  :root:not(.dark) h4,
-  :root:not(.dark) h5,
-  :root:not(.dark) h6 {
-    color: var(--heading-color-light);
-  }
-
-  :root:not(.dark) a {
-    color: var(--link-color-light);
   }
 }
 
