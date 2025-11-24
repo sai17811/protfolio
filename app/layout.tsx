@@ -68,7 +68,7 @@ export default function RootLayout({
     "url": "https://saidevv.com",
     "jobTitle": "Full-Stack Developer",
     "sameAs": [
-      "https://github.com/saidevv"
+      "https://github.com/sai17811"
     ]
   };
 

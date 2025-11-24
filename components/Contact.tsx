@@ -99,8 +99,8 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-xs text-muted-foreground">Email</p>
-                                    <a href="mailto:sai@example.com" className="text-sm md:text-base font-medium hover:text-primary transition-colors">
-                                        sai@example.com
+                                    <a href="mailto:nagasai.akula.dev@gmail.com" className="text-sm md:text-base font-medium hover:text-primary transition-colors">
+                                        nagasai.akula.dev@gmail.com
                                     </a>
                                 </div>
                             </div>
@@ -111,8 +111,8 @@ export function Contact() {
                                 </div>
                                 <div>
                                     <p className="text-xs text-muted-foreground">Mobile</p>
-                                    <a href="tel:+1234567890" className="text-sm md:text-base font-medium hover:text-primary transition-colors">
-                                        +1 (234) 567-890
+                                    <a href="tel:+917995877013" className="text-sm md:text-base font-medium hover:text-primary transition-colors">
+                                        +91 7995877013
                                     </a>
                                 </div>
                             </div>
@@ -123,14 +123,14 @@ export function Contact() {
                             <p className="text-sm font-medium mb-3">Connect with me</p>
                             <div className="flex gap-3">
                                 <Link
-                                    href="https://github.com/saidevv"
+                                    href="https://github.com/sai17811"
                                     target="_blank"
                                     className="p-3 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
                                 >
                                     <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
                                 </Link>
                                 <Link
-                                    href="https://leetcode.com/saidevv"
+                                    href="https://leetcode.com/u/nagasaitac143"
                                     target="_blank"
                                     className="p-3 rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
                                 >

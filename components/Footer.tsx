@@ -29,10 +29,10 @@ export function Footer() {
                     </nav>
 
                     <div className="flex items-center gap-4">
-                        <Link href="https://github.com/saidevv" target="_blank" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="GitHub">
+                        <Link href="https://github.com/sai17811" target="_blank" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="GitHub">
                             <Github className="w-4 h-4" />
                         </Link>
-                        <Link href="https://leetcode.com/u/saidevv" target="_blank" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="LeetCode">
+                        <Link href="https://leetcode.com/u/nagasaitac143" target="_blank" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="LeetCode">
                             <Code2 className="w-4 h-4" />
                         </Link>
                         <Link href="mailto:nagasai.akula.dev@gmail.com" className="p-2 rounded-full hover:bg-secondary transition-colors" aria-label="Email">

@@ -102,7 +102,7 @@ export function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={textVariants}
-                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight"
                     >
                         <span className="block mb-2">Hi, I'm Sai</span>
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400 inline-flex items-center min-h-[1.2em]">
@@ -150,7 +150,7 @@ export function Hero() {
                         className="flex items-center justify-center lg:justify-start gap-4 pt-4"
                     >
                         <a
-                            href="https://github.com/saidevv"
+                            href="https://github.com/sai17811"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground hover:text-foreground transition-colors p-2"
@@ -159,7 +159,7 @@ export function Hero() {
                             <Github className="h-6 w-6" />
                         </a>
                         <a
-                            href="https://leetcode.com/u/saidevv"
+                            href="https://leetcode.com/u/nagasaitac143"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground hover:text-foreground transition-colors p-2"
