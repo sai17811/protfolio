@@ -27,10 +27,19 @@ export function Contact() {
         };
 
         try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
 
-            // For demo purposes, we'll show success
+            if (!response.ok) {
+                const result = await response.json();
+                throw new Error(result.error || 'Failed to send message');
+            }
+
             setIsSubmitted(true);
             e.currentTarget.reset();
             toast.success("Message sent successfully! I'll get back to you soon.");
