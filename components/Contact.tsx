@@ -18,7 +18,8 @@ export function Contact() {
         e.preventDefault();
         setIsLoading(true);
 
-        const formData = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const formData = new FormData(form);
         const data = {
             name: formData.get('name'),
             email: formData.get('email'),
@@ -40,8 +41,8 @@ export function Contact() {
                 throw new Error(result.error || 'Failed to send message');
             }
 
+            form.reset();
             setIsSubmitted(true);
-            e.currentTarget.reset();
             toast.success("Message sent successfully! I'll get back to you soon.");
 
             // Reset after 5 seconds
