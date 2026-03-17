@@ -31,9 +31,9 @@ const textVariants = {
 };
 
 const jobTitles = [
-    "UI/UX Engineer",
-    "React Specialist",
-    "Frontend Developer"
+    "Senior MERN Developer",
+    "Full Stack Architect",
+    "Performance Specialist"
 ];
 
 export function Hero() {
@@ -83,14 +83,23 @@ export function Hero() {
                         variants={textVariants}
                         className="flex flex-wrap items-center justify-center lg:justify-start gap-2 md:gap-3"
                     >
-                        <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs md:text-sm font-medium bg-secondary/50 backdrop-blur-sm whitespace-nowrap">
-                            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                        {/* Available for work badge */}
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1a1a1a] dark:bg-[#1a1a1a] border border-white/10 text-white text-sm font-medium shadow-md">
+                            <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                            </span>
                             Available for work
-                        </div>
-                        <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs md:text-sm font-medium bg-green-500/10 text-green-500 border-green-500/20 backdrop-blur-sm whitespace-nowrap">
-                            <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                        </span>
+
+                        {/* Freelancing badge */}
+                        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1a1a1a] dark:bg-[#1a1a1a] border border-green-500/60 text-green-400 text-sm font-medium shadow-md">
+                            <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                            </span>
                             Freelancing
-                        </div>
+                        </span>
                     </motion.div>
 
                     <motion.h1
@@ -114,8 +123,9 @@ export function Hero() {
                         variants={textVariants}
                         className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 text-balance leading-relaxed"
                     >
-                        I build accessible, pixel-perfect, and performant web experiences.
-                        Passionate about crafting software that solves real-world problems and delights users.
+                        I architect scalable, production-grade MERN applications.
+                        With 4 years of experience delivering high-availability systems serving 150K+ daily users,
+                        I specialize in creating high-performance, secure digital experiences.
                     </motion.p>
 
                     <motion.div

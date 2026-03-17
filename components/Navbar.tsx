@@ -110,7 +110,7 @@ export function Navbar() {
                                             <h2 className="font-bold text-lg tracking-tight leading-none mb-1">
                                                 Sai
                                             </h2>
-                                            <p className="text-xs text-muted-foreground font-medium">Frontend Developer</p>
+                                            <p className="text-xs text-muted-foreground font-medium">Senior MERN Developer</p>
                                         </div>
                                     </div>
                                     <SheetClose asChild>

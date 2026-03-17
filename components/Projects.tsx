@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Rocket } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -92,16 +92,29 @@ export function Projects() {
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
     return (
-        <section id="projects" className="py-20 bg-secondary/20">
+        <section id="projects" className="py-16 bg-secondary/20 relative border-t border-border/40">
+            {/* Section Separator */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
             <div className="container px-4 md:px-6">
-                <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-                        Featured <span className="text-primary">Projects</span>
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-12"
+                >
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase mb-3">
+                        <Rocket className="w-3 h-3" />
+                        What I've Built
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground">
+                        Featured <span className="text-primary italic">Projects</span>
                     </h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto">
+                    <div className="h-0.5 w-10 bg-primary/30 rounded-full mx-auto mt-3" />
+                    <p className="text-muted-foreground text-sm mt-3 max-w-md mx-auto">
                         Some of the impactful solutions I've built
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto px-4">
                     {projects.map((project, index) => (
@@ -123,8 +136,8 @@ export function Projects() {
                                         fill
                                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <span className="text-white font-medium border border-white/30 px-4 py-2 rounded-full backdrop-blur-sm">
+                                    <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <span className="text-foreground font-medium border border-border px-4 py-2 rounded-full backdrop-blur-sm">
                                             View Details
                                         </span>
                                     </div>

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, Github, Send, Code2, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, Github, Send, Code2, CheckCircle2, MessageSquare } from "lucide-react";
 import { SocialLink } from "@/components/SocialLink";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -58,7 +58,9 @@ export function Contact() {
     };
 
     return (
-        <section id="contact" className="py-16 md:py-24 relative overflow-hidden">
+        <section id="contact" className="py-16 md:py-24 relative overflow-hidden border-t border-border/40">
+            {/* Section Separator */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
             {/* Background Gradients */}
             <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 via-background to-background pointer-events-none" />
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
@@ -66,25 +68,25 @@ export function Contact() {
 
             <div className="container px-4 md:px-6 relative z-10">
                 {/* Header */}
-                <div className="text-center mb-8 md:mb-12 max-w-2xl mx-auto">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold tracking-tight mb-3 md:mb-4"
-                    >
-                        Let's <span className="text-primary">Connect</span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-muted-foreground text-sm md:text-base"
-                    >
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-10"
+                >
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase mb-3">
+                        <MessageSquare className="w-3 h-3" />
+                        Let's Talk
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground">
+                        Let's <span className="text-primary italic">Connect</span>
+                    </h2>
+                    <div className="h-0.5 w-10 bg-primary/30 rounded-full mx-auto mt-3" />
+                    <p className="text-muted-foreground text-sm mt-3 max-w-md mx-auto">
                         Have a project in mind or want to collaborate? Drop me a message!
-                    </motion.p>
-                </div>
+                    </p>
+                </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start max-w-5xl mx-auto">
                     {/* Left Column - Info */}

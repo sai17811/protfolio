@@ -2,44 +2,45 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Briefcase, Calendar } from "lucide-react";
+import { Briefcase, Calendar, TrendingUp } from "lucide-react";
 
 const experiences = [
     {
         id: 1,
-        role: "Senior Frontend Developer",
+        role: "Senior Full Stack Developer",
         company: "TechCorp Solutions",
         period: "Sep 2024 – Present",
         description: [
-            "Architecting high-performance React applications serving 150K+ daily users with 99.9% uptime.",
-            "Established a modern Design System using Storybook, reducing development cycles by 45%.",
-            "Leading technical initiatives for performance optimization, achieving a 35% boost in load times."
+            "Led development of production-grade MERN applications serving 150K+ daily active users, maintaining 99.9% uptime.",
+            "Architected a reusable component library using React, TypeScript, and Storybook, reducing dev time by 45%.",
+            "Optimized application performance using code splitting and lazy loading, achieving a 35% improvement in load times.",
+            "Designed optimized MongoDB schemas and indexing strategies, improving API response times by 30%."
         ],
-        skills: ["React", "TypeScript", "Redux Toolkit", "Storybook"]
+        skills: ["React", "TypeScript", "Node.js", "MongoDB", "Redux Toolkit"]
     },
     {
         id: 2,
-        role: "Frontend Developer",
+        role: "Full Stack Developer",
         company: "Suthra Technologies",
         period: "Feb 2024 – Aug 2024",
         description: [
-            "Engineered secure NBFC banking platforms handling complex loan workflows and real-time transactions.",
-            "Implemented bank-grade security features including role-based access control and secure session management.",
-            "Optimized critical financial dashboards for seamless data visualization and user experience."
+            "Developed end-to-end features for a fintech banking platform including loan workflows and account dashboards.",
+            "Integrated complex REST APIs for transactions and loan tracking with real-time UI updates.",
+            "Improved UI maintainability by optimizing rendering and implementing highly reusable Material-UI components."
         ],
-        skills: ["React.js", "Material UI", "Fintech", "Security"]
+        skills: ["React.js", "Material UI", "Express.js", "REST APIs", "Fintech"]
     },
     {
         id: 3,
-        role: "Frontend Developer",
+        role: "Full Stack Developer",
         company: "Digital Innovations Inc.",
         period: "May 2022 – Jan 2024",
         description: [
-            "Delivered pixel-perfect, responsive web solutions ensuring 100% mobile compatibility.",
-            "Spearheaded unit testing initiatives achieving 85% coverage and significantly reducing production bugs.",
-            "Collaborated with cross-functional teams to translate complex requirements into intuitive UIs."
+            "Developed and integrated full-stack modules using React.js, Node.js, Express.js and MongoDB.",
+            "Achieved 100% mobile compatibility and 25% mobile engagement growth via CSS Grid and Flexbox layouts.",
+            "Wrote comprehensive unit tests using Jest and RTL, achieving 85% coverage and reducing production bugs by 50%."
         ],
-        skills: ["React.js", "Jest", "Responsive Design", "Performance"]
+        skills: ["React.js", "Node.js", "Jest", "Unit Testing", "Responsive Design"]
     }
 ];
 
@@ -123,33 +124,35 @@ export function Experience3D() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <section id="experience" className="py-20 relative overflow-hidden bg-gradient-to-b from-background via-secondary/20 to-background">
+        <section id="experience" className="py-16 relative overflow-hidden bg-gradient-to-b from-background via-secondary/20 to-background border-t border-border/40">
+            {/* Section Separator */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
             {/* Background Effects */}
-            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+            <div className="absolute inset-0 bg-grid-foreground/[0.02] bg-[size:50px_50px]" />
             <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
 
             <div ref={containerRef} className="container px-4 md:px-6 relative z-10">
                 {/* Header */}
-                <div className="text-center mb-16 md:mb-20">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
-                    >
-                        Professional <span className="text-primary">Journey</span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-muted-foreground max-w-2xl mx-auto"
-                    >
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-12"
+                >
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold tracking-widest uppercase mb-3">
+                        <TrendingUp className="w-3 h-3" />
+                        Career Path
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground">
+                        Professional <span className="text-primary italic">Journey</span>
+                    </h2>
+                    <div className="h-0.5 w-10 bg-primary/30 rounded-full mx-auto mt-3" />
+                    <p className="text-muted-foreground text-sm mt-3 max-w-md mx-auto">
                         A timeline of my professional growth and key contributions
-                    </motion.p>
-                </div>
+                    </p>
+                </motion.div>
 
                 {/* Timeline */}
                 <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">

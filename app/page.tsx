@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 
 const Hero = dynamic(() => import("@/components/Hero").then((mod) => mod.Hero), { ssr: false });
 const Background3D = dynamic(() => import("@/components/Background3D").then((mod) => mod.Background3D), { ssr: false });
+const ActivityStats = dynamic(() => import("@/components/ActivityStats").then((mod) => mod.ActivityStats), { ssr: false });
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <About />
       <TechStack />
+      <ActivityStats />
       <Experience3D />
       <Projects />
       <Contact />

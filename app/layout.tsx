@@ -9,19 +9,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Sai | Frontend Developer",
+    default: "Sai | Senior MERN Developer",
     template: "%s | Sai"
   },
-  description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript. Building scalable, high-performance web applications with pixel-perfect design.",
-  keywords: ["Frontend Developer", "Full Stack Developer", "React Developer", "Next.js", "TypeScript", "Web Development", "Portfolio"],
+  description: "Senior MERN Developer specializing in React, Node.js, and MongoDB. Building scalable, high-performance web applications with precision.",
+  keywords: ["MERN Developer", "Full Stack Developer", "React Developer", "Node.js", "MongoDB", "TypeScript", "Web Development", "Portfolio"],
   authors: [{ name: "Sai" }],
   creator: "Sai",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://saidevv.com",
-    title: "Sai | Full-Stack Developer",
-    description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript.",
+    title: "Sai | Senior MERN Developer",
+    description: "Senior MERN Developer specializing in React, Node.js, and MongoDB.",
     siteName: "Sai Portfolio",
     images: [
       {
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sai | Full-Stack Developer",
-    description: "Senior Frontend Developer specializing in React, Next.js, and TypeScript.",
+    title: "Sai | Senior MERN Developer",
+    description: "Senior MERN Developer specializing in React, Node.js, and MongoDB.",
     images: ["/og-image.png"],
     creator: "@saidevv",
   },
@@ -66,7 +66,7 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Sai",
     "url": "https://saidevv.com",
-    "jobTitle": "Full-Stack Developer",
+    "jobTitle": "Senior MERN Developer",
     "sameAs": [
       "https://github.com/sai1781"
     ]
