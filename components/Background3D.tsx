@@ -1,14 +1,32 @@
 "use client";
 
-import { useEffect, useState, Suspense, useRef, memo } from "react";
+import { useEffect, useState, Suspense, useRef, memo, useMemo } from "react";
 import { useTheme } from "next-themes";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
+const geometries = {
+    sphere: new THREE.SphereGeometry(1, 16, 16),
+    box: new THREE.BoxGeometry(1.5, 1.5, 1.5),
+    torus: new THREE.TorusGeometry(0.8, 0.3, 12, 48),
+    icosahedron: new THREE.IcosahedronGeometry(1, 0),
+    octahedron: new THREE.OctahedronGeometry(1, 0),
+    cone: new THREE.ConeGeometry(1, 2, 16)
+};
+
 const FloatingShape = memo(function FloatingShape({ position, geometry, color, speed = 1, size = 1, distort = 0.3 }: { position: [number, number, number], geometry: "sphere" | "box" | "torus" | "icosahedron" | "octahedron" | "cone", color: string, speed?: number, size?: number, distort?: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
     const initialPosition = useRef(position);
+    
+    // Memoize the material so we don't recreate it every frame or render
+    const material = useMemo(() => new THREE.MeshStandardMaterial({
+        color: color,
+        roughness: 0.1,
+        metalness: 0.2,
+        emissive: color,
+        emissiveIntensity: 0.2
+    }), [color]);
 
     useFrame((state) => {
         if (meshRef.current) {
@@ -28,21 +46,7 @@ const FloatingShape = memo(function FloatingShape({ position, geometry, color, s
     });
 
     return (
-        <mesh ref={meshRef} position={position} scale={[size, size, size]}>
-            {geometry === "sphere" && <sphereGeometry args={[1, 16, 16]} />}
-            {geometry === "box" && <boxGeometry args={[1.5, 1.5, 1.5]} />}
-            {geometry === "torus" && <torusGeometry args={[0.8, 0.3, 12, 48]} />}
-            {geometry === "icosahedron" && <icosahedronGeometry args={[1, 0]} />}
-            {geometry === "octahedron" && <octahedronGeometry args={[1, 0]} />}
-            {geometry === "cone" && <coneGeometry args={[1, 2, 16]} />}
-            <meshStandardMaterial
-                color={color}
-                roughness={0.1}
-                metalness={0.2}
-                emissive={color}
-                emissiveIntensity={0.2}
-            />
-        </mesh>
+        <mesh ref={meshRef} position={position} scale={[size, size, size]} geometry={geometries[geometry]} material={material} />
     );
 });
 
