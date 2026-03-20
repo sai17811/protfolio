@@ -80,7 +80,7 @@ function YearDropdown({
                         initial={{ opacity: 0, y: 15, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute bottom-full mb-3 left-0 right-0 z-[60] bg-[#0a0a0a]/90 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-3xl overflow-hidden p-1.5"
+                        className="absolute top-full mt-3 left-0 right-0 z-[60] bg-[#0a0a0a]/90 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-3xl overflow-hidden p-1.5"
                     >
                         {YEARS.map((y) => (
                             <button
@@ -352,7 +352,7 @@ export function ActivityStats() {
             <div className="container relative px-5 sm:px-10">
                 <div className="max-w-6xl mx-auto">
                     {/* Compact Header & Controls Row - Emerald Version 2.0 */}
-                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 w-full overflow-hidden">
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 w-full relative z-[70]">
                         <div className="text-left">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
@@ -369,7 +369,7 @@ export function ActivityStats() {
                         </div>
 
                         {/* Creative Control Dock - Integrated */}
-                        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center p-1.5 sm:p-2 rounded-[1.2rem] sm:rounded-[1.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl overflow-hidden">
+                        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center p-1.5 sm:p-2 rounded-[1.2rem] sm:rounded-[1.5rem] bg-white/[0.02] border border-white/10 backdrop-blur-3xl">
                             {/* Tab Switcher - Force Grid on Mobile */}
                             <div className="grid grid-cols-2 w-full sm:w-auto p-0.5 sm:p-1 rounded-[1.1rem] bg-black/40 border border-white/5 relative overflow-hidden flex-1 sm:flex-none">
                                 <motion.div

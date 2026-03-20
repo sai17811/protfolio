@@ -110,9 +110,11 @@ export function Hero() {
                         className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight"
                     >
                         <span className="block mb-2">Hi, I'm Sai</span>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400 inline-flex items-center min-h-[1.2em]">
-                            {displayedText}
-                            <span className="inline-block w-0.5 h-[0.8em] bg-primary ml-1 animate-pulse"></span>
+                        <span className="inline min-h-[1.2em]">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 dark:from-blue-400 dark:to-purple-400" style={{ WebkitBoxDecorationBreak: 'clone' }}>
+                                {displayedText}
+                            </span>
+                            <span className="inline-block w-[3px] h-[0.9em] bg-primary ml-1 animate-pulse align-baseline"></span>
                         </span>
                     </motion.h1>
 

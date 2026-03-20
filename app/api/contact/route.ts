@@ -26,7 +26,9 @@ export async function POST(request: Request) {
         // Create transporter using Gmail
         // You'll need to set up App Password in your Gmail account
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // Use SSL
             auth: {
                 user: process.env.EMAIL_USER || 'nagasai.akula.dev@gmail.com',
                 pass: process.env.EMAIL_PASSWORD, // Use App Password, not regular password

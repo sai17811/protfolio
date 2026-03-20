@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState, Suspense, useRef } from "react";
+import { useEffect, useState, Suspense, useRef, memo } from "react";
 import { useTheme } from "next-themes";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
-function FloatingShape({ position, geometry, color, speed = 1, size = 1, distort = 0.3 }: { position: [number, number, number], geometry: "sphere" | "box" | "torus" | "icosahedron" | "octahedron" | "cone", color: string, speed?: number, size?: number, distort?: number }) {
+const FloatingShape = memo(function FloatingShape({ position, geometry, color, speed = 1, size = 1, distort = 0.3 }: { position: [number, number, number], geometry: "sphere" | "box" | "torus" | "icosahedron" | "octahedron" | "cone", color: string, speed?: number, size?: number, distort?: number }) {
     const meshRef = useRef<THREE.Mesh>(null);
     const initialPosition = useRef(position);
 
@@ -44,7 +44,7 @@ function FloatingShape({ position, geometry, color, speed = 1, size = 1, distort
             />
         </mesh>
     );
-}
+});
 
 function Scene({ isDark }: { isDark: boolean }) {
     return (
@@ -109,7 +109,7 @@ export function Background3D() {
         <div className="fixed inset-0 -z-10 pointer-events-none transition-colors duration-700 ease-in-out">
             <Canvas
                 camera={{ position: [0, 0, 5], fov: 50 }}
-                dpr={[1, 1.5]} // Optimization: Cap pixel ratio
+                dpr={[1, 1.2]} // Optimization: Lower cap pixel ratio for better performance
                 gl={{
                     antialias: true,
                     alpha: true,

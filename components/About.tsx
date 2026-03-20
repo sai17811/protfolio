@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
+import Image from "next/image";
 
 const stats = [
     { value: "4+", label: "Years Exp." },
@@ -57,9 +58,13 @@ export function About() {
                                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/25 via-green-500/10 to-transparent rounded-2xl rotate-3 scale-105 blur-2xl opacity-60 group-hover:rotate-6 transition-all duration-700 -z-10" />
 
                                 <div className="relative w-[180px] h-[220px] rounded-2xl overflow-hidden border border-border/50 shadow-xl bg-secondary/20">
-                                    <img
+                                    <Image
                                         src="/images/profile.png"
                                         alt="Sai — Senior MERN Developer"
+                                        width={180}
+                                        height={220}
+                                        quality={90}
+                                        priority
                                         className="object-cover object-top w-full h-full grayscale-[0.15] group-hover:grayscale-0 transition-all duration-700"
                                     />
                                     {/* Bottom overlay gradient */}
