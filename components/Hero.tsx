@@ -126,7 +126,7 @@ export function Hero() {
                         className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 text-balance leading-relaxed"
                     >
                         I architect scalable, production-grade MERN applications.
-                        With 4 years of experience delivering high-availability systems serving 150K+ daily users,
+                        With 4 years of experience delivering high-availability systems,
                         I specialize in creating high-performance, secure digital experiences.
                     </motion.p>
 

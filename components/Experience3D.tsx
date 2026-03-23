@@ -11,7 +11,7 @@ const experiences = [
         company: "TechCorp Solutions",
         period: "Sep 2024 – Present",
         description: [
-            "Led development of production-grade MERN applications serving 150K+ daily active users, maintaining 99.9% uptime.",
+            "Led development of production-grade MERN applications, maintaining 99.9% uptime.",
             "Architected a reusable component library using React, TypeScript, and Storybook, reducing dev time by 45%.",
             "Optimized application performance using code splitting and lazy loading, achieving a 35% improvement in load times.",
             "Designed optimized MongoDB schemas and indexing strategies, improving API response times by 30%."

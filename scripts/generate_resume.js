@@ -33,7 +33,7 @@ doc.moveDown(0.5);
 doc.font('Regular').fontSize(10).fillColor(secondaryColor);
 doc.text('nagasai.akula.dev@gmail.com   |   +91 7995877013', { align: 'center' });
 doc.moveDown(0.2);
-doc.fillColor(accentColor).text('Portfolio: https://saiportfoliio.netlify.app/', { align: 'center', link: 'https://saiportfoliio.netlify.app/' });
+doc.fillColor(accentColor).text('Portfolio: https://saidev-portfolio.netlify.app/', { align: 'center', link: 'https://saidev-portfolio.netlify.app/' });
 doc.text('GitHub: https://github.com/sai1781   |   LeetCode: https://leetcode.com/u/nagasaitac143', { align: 'center' });
 
 doc.moveDown(1.5);
@@ -49,7 +49,7 @@ function addSectionHeader(title) {
 addSectionHeader('Professional Summary');
 doc.font('Regular').fontSize(10).fillColor(secondaryColor);
 doc.text(
-  'Senior MERN Stack Developer with 4 years of experience building scalable, production-grade web applications serving 150K+ daily active users. Strong expertise in React.js, Node.js, Express.js and MongoDB with a focus on secure RESTful API development, JWT-based authentication, role-based access control (RBAC), and performance optimization. Experienced in designing reusable component architectures, optimizing database queries, and delivering high-availability systems with 99.9% uptime in Agile environments.',
+  'Senior MERN Stack Developer with 4 years of experience building scalable, production-grade web applications. Strong expertise in React.js, Node.js, Express.js and MongoDB with a focus on secure RESTful API development, JWT-based authentication, role-based access control (RBAC), and performance optimization. Experienced in designing reusable component architectures, optimizing database queries, and delivering high-availability systems with 99.9% uptime in Agile environments.',
   { align: 'justify', lineHeight: 1.5 }
 );
 doc.moveDown(1);
@@ -95,7 +95,7 @@ addExperience(
   'TechCorp Solutions', 
   'Sep 2024 – Present', 
   [
-    'Led development and maintainece of production-grade MERN applications serving 150K+ daily active users, ensuring 99.9% uptime with proactive monitoring and production issue resolution.',
+    'Led development and maintainece of production-grade MERN applications, ensuring 99.9% uptime with proactive monitoring and production issue resolution.',
     'Architected and implemented a reusable component library using React, TypeScript, and Storybook, reducing development time by 45% and improving code consistency in projects.',
     'Optimized application performance by implementing code splitting, lazy loading, and memoization techniques, achieving 35% improvement in load times and 28% reduction in bundle size.',
     'Implemented Redux Toolkit for state management, reducing boilerplate code by 55% and improving state management efficiency across applications.',

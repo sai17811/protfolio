@@ -6,7 +6,6 @@ import Image from "next/image";
 
 const stats = [
     { value: "4+", label: "Years Exp." },
-    { value: "150K+", label: "Daily Users" },
     { value: "99.9%", label: "Uptime" },
 ];
 
@@ -105,12 +104,12 @@ export function About() {
                                     I specialize in building scalable, production-grade MERN applications. Deep expertise in React, Node.js, and MongoDB — focused on performance and secure architecture.
                                 </p>
                                 <p className="opacity-80">
-                                    Managed mission-critical systems serving 150K+ daily active users with 99.9% uptime, bringing a senior-level perspective to every line of code.
+                                    Managed mission-critical systems with 99.9% uptime, bringing a senior-level perspective to every line of code.
                                 </p>
                             </div>
 
                             {/* Stat cards */}
-                            <div className="grid grid-cols-3 gap-3 max-w-sm mx-auto lg:mx-0">
+                            <div className="grid grid-cols-2 gap-3 max-w-sm mx-auto lg:mx-0">
                                 {stats.map((stat, i) => (
                                     <motion.div
                                         key={stat.label}
