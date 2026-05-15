@@ -39,7 +39,7 @@ export function Footer() {
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-border/50 text-center text-xs text-muted-foreground">
-                    <p>© {new Date().getFullYear()} Sai. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()}  All rights reserved @sai@ </p>
                 </div>
             </div>
         </footer>
